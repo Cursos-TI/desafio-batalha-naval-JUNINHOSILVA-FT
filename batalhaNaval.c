@@ -1,46 +1,43 @@
 #include <stdio.h>
 
 int main() {
-    // Tamanho do tabuleiro
-    int tabuleiro[8][8];
-
-    // Navio vertical
-    int inicioX_vertical = 2;
-    int inicioY_vertical = 1;
-    int tamanho_vertical = 3;
-
-    // Navio horizontal
-    int inicioX_horizontal = 1;
-    int inicioY_horizontal = 5;
-    int tamanho_horizontal = 4;
-
-    // Preencher o tabuleiro com 0
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            tabuleiro[i][j] = 0;
+    // Cria um tabuleiro 10x10
+    int tabuleiro[10][10];
+    
+    // Preenche o tabuleiro com 0 (água)
+    for (int linha = 0; linha < 10; linha++) {
+        for (int coluna = 0; coluna < 10; coluna++) {
+            tabuleiro[linha][coluna] = 0;
         }
     }
 
-    // Colocar navio vertical (marcando com 1)
-    for (int i = 0; i < tamanho_vertical; i++) {
-        tabuleiro[inicioY_vertical + i][inicioX_vertical] = 1;
+    // Posicionamento do navio vertical
+    int xNavioV = 2; // coluna do navio vertical
+    int yNavioV = 3; // linha do navio vertical
+    int tamanhoNavioV = 3;
+
+    // Posicionamento do navio horizontal
+    int xNavioH = 5; // coluna do navio horizontal
+    int yNavioH = 6; // linha do navio horizontal
+    int tamanhoNavioH = 3;
+
+    // Coloca o navio vertical no tabuleiro (marcando com 3)
+    for (int i = 0; i < tamanhoNavioV; i++) {
+        tabuleiro[yNavioV + i][xNavioV] = 3;
     }
 
-    // Colocar navio horizontal (marcando com 2)
-    for (int i = 0; i < tamanho_horizontal; i++) {
-        tabuleiro[inicioY_horizontal][inicioX_horizontal + i] = 2;
+    // Coloca o navio horizontal no tabuleiro (marcando com 3)
+    for (int i = 0; i < tamanhoNavioH; i++) {
+        tabuleiro[yNavioH][xNavioH + i] = 3;
     }
 
-    // Mostrar as coordenadas do navio vertical
-    printf("Coordenadas do navio vertical:\n");
-    for (int i = 0; i < tamanho_vertical; i++) {
-        printf("(%d, %d)\n", inicioX_vertical, inicioY_vertical + i);
-    }
-
-    // Mostrar as coordenadas do navio horizontal
-    printf("\nCoordenadas do navio horizontal:\n");
-    for (int i = 0; i < tamanho_horizontal; i++) {
-        printf("(%d, %d)\n", inicioX_horizontal + i, inicioY_horizontal);
+    // Mostra o tabuleiro completo
+    printf("\n--- Tabuleiro Final ---\n");
+    for (int linha = 0; linha < 10; linha++) {
+        for (int coluna = 0; coluna < 10; coluna++) {
+            printf("%d ", tabuleiro[linha][coluna]);
+        }
+        printf("\n");
     }
 
     return 0;
